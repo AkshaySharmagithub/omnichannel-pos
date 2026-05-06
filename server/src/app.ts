@@ -16,6 +16,14 @@ app.use(cors());
 app.use(express.json());
 app.use(morgan('dev'));
 
+app.get('/', (req, res) => {
+  res.send('Omnichannel POS Backend is running');
+});
+
+app.get('/favicon.ico', (req, res) => {
+  res.status(204).end();
+});
+
 app.use('/api/auth', authRoutes);
 app.use('/api/products', productRoutes);
 app.use('/api/inventory', inventoryRoutes);
