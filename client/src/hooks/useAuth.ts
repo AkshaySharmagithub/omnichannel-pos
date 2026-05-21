@@ -11,7 +11,12 @@ export const useAuth = () => {
     dispatch(setLoading(true));
     try {
       const data = await authService.login(email, password);
-      dispatch(setUser(data));
+      dispatch(
+  setUser({
+    ...data.data,
+    token: data.token,
+  })
+);
       return data;
     } catch (err: unknown) {
       const axiosError = err as { response?: { data?: { message?: string } } };

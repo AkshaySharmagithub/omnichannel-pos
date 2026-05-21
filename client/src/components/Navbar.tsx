@@ -65,7 +65,7 @@ export const Navbar: React.FC = () => {
       {/* User Actions & Profile */}
       {user && (
         <div className="flex items-center space-x-4">
-          <div className="flex flex-col items-end hidden md:flex">
+          <div className="flex flex-col items-end md:flex">
             <span className="text-sm font-semibold text-slate-200">{user.name}</span>
             <span className="mt-0.5">{getRoleBadge(user.role)}</span>
           </div>
