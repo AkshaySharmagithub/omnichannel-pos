@@ -55,7 +55,9 @@ export const Dashboard: React.FC = () => {
     fetchDashboardData();
   }, []);
 
-  const totalSales = recentOrders.reduce((sum, order) => sum + (order.total || 0), 0);
+  const totalSales = Array.isArray(recentOrders)
+    ? recentOrders.reduce((sum, order) => sum + (order.total || 0), 0)
+    : 0;
 
   if (loading) {
     return (
@@ -169,7 +171,7 @@ export const Dashboard: React.FC = () => {
           </div>
           <div>
             <span className="text-[10px] uppercase font-bold tracking-wider text-slate-500 block">Orders Completed</span>
-            <span className="text-2xl font-black text-white">{recentOrders.length}</span>
+            <span className="text-2xl font-black text-white">{Array.isArray(recentOrders) ? recentOrders.length : 0}</span>
           </div>
         </div>
       </div>
@@ -185,7 +187,7 @@ export const Dashboard: React.FC = () => {
             </Link>
           </div>
 
-          {recentOrders.length === 0 ? (
+          {!Array.isArray(recentOrders) || recentOrders.length === 0 ? (
             <div className="text-center py-12 text-slate-500 border border-dashed border-slate-800 rounded-xl bg-slate-900/10">
               No orders logged at this terminal yet.
             </div>
