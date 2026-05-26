@@ -27,7 +27,8 @@ export const Products: React.FC = () => {
     setError(null);
     try {
       const data = await productService.getAll({ search });
-      setProducts(data);
+     // console.log('Fetched products data:', data.products); // Debugging line to check products data
+      setProducts(data.products || []);
     } catch (err: unknown) {
       console.error(err);
       const axiosError = err as { response?: { data?: { message?: string } } };

@@ -35,8 +35,9 @@ export const POS: React.FC = () => {
       setLoadingProducts(true);
       try {
         const data = await productService.getAll({ search: searchTerm });
+        console.log('Fetched products data:', data.products); // Debugging line to check products data
         // Filter out inactive products
-        setProducts(data.filter((p: Product) => p.isActive));
+        setProducts(data.products.filter((p: Product) => p.isActive));
       } catch (err) {
         console.error('Error fetching products', err);
       } finally {
