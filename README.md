@@ -217,3 +217,5 @@ Raunak Chirania
 Gurnoor Singh
 Akshay Sharma
 Aman Thakur
+
+Frontend Live Link: https://omnichannel-pos-1.vercel.app/login
